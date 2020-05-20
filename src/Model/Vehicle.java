@@ -16,5 +16,5 @@ public abstract class Vehicle {
     private Color colour;
     private Random random = new Random();
 
-    
+
 }
