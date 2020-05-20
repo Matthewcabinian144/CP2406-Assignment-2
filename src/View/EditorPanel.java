@@ -1,4 +1,9 @@
 package View;
 
-public class EditorPanel {
+import javax.swing.*;
+
+public class EditorPanel extends JPanel {
+
+
+
 }
