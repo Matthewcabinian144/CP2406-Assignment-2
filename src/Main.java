@@ -19,7 +19,7 @@ public class Main {
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        //Simulation Status Bar//
+        //Simulator Status Bar//
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new GridLayout(1, 0));
         bottomPanel.setBorder(BorderFactory.createLoweredSoftBevelBorder());
@@ -29,6 +29,9 @@ public class Main {
         bottomPanel.add(statusLabel);
         mainWindow.add(bottomPanel, BorderLayout.SOUTH);
 
+        //Simulator Menu Bar//
+        JMenuBar menuBar = new JMenuBar();
+        mainWindow.add(menuBar, BorderLayout.NORTH);
 
 
     }
