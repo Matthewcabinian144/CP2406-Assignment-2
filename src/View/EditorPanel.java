@@ -65,4 +65,14 @@ public class EditorPanel extends JPanel {
 
     }
 
+    public ArrayList<Road> getRoads() {
+        return roads;
+    }
+
+    public ArrayList<TrafficLight> getLights() {
+        return lights;
+    }
+
+    
+
 }
