@@ -74,4 +74,49 @@ public class SimulationPanel extends JPanel {
         infoPanel.add(stateLabel);
         add(infoPanel, BorderLayout.SOUTH);
 
+        if (timer != null) {
+            timer.stop();
+        }
+        timer = new Timer(updateRate / 60, e -> {
+            cycle++;
+            if (vehicles.size() == 0) {
+                state = State.FINISHED;
+            } else if (stop) {
+                state = State.STOPPED;
+            } else {
+                state = State.RUNNING;
+            }
+            stateLabel.setText("State: " + state);
+            vehicleLabel.setText("Vehicles: " + getTotalVehicles());
+            averageSpeedLabel.setText("Average Speed:" + getAverageSpeed());
+            if (vehicles.size() == 0 || stop) {
+                timer.stop();
+            }
+            if (cycle % 30 == 0) { //light operates every x tics
+                for (TrafficLight light : lights) {
+                    light.operate(random.nextInt());
+                    light.printLightStatus();
+                }
+            }
+            for (Iterator<Vehicle> iterator = vehicles.iterator(); iterator.hasNext(); ) {
+                Vehicle vehicle = iterator.next();
+//                vehicle.setLane(Model.Vehicle.Lane.LEFT);
+                vehicle.move();
+                vehicle.printStatus();
+                if (vehicle.getPosition() + vehicle.getLength() + vehicle.getSpeed() >= vehicle.getCurrentRoad().getLength() && vehicle.getCurrentRoad().getConnectedRoads().isEmpty() && (vehicle.getSpeed() == 0)) {
+                    vehicle.getCurrentRoad().getVehiclesOnRoad().remove(vehicle);
+                    iterator.remove();
+                    vehiclesRemoved++;
+                }
+            }
+
+            if (cycle % numberOfCycles == 0 && vehiclesSpawned < vehiclesToSpawn) {
+                createVehicle();
+                vehiclesSpawned++;
+            }
+            repaint();
+        });
+        timer.start();
+    }
+
 }
