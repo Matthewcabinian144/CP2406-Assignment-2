@@ -69,6 +69,21 @@ public class TrafficLight {
             int height = (getRoadAttachedTo().getWidth() / 2) * scale;
             g.fillRect(x, y, scale, height);
         }
+        if (roadAttachedTo.getOrientation() == Road.Orientation.VERTICAL) {
+            switch (state) {
+                case "red":
+                    g.setColor(Color.red);
+                    break;
+                case "green":
+                    g.setColor(Color.green);
+            }
+            int[] startLocation = getRoadAttachedTo().getStartLocation();
+            int x = (startLocation[0] + (getRoadAttachedTo().getWidth() / 2)) * scale;
+            int y = (getPosition() + startLocation[1]) * scale;
+            int width = (getRoadAttachedTo().getWidth() / 2) * scale;
+            g.fillRect(x, y, width, scale);
+        }
+    }
 
 
 
