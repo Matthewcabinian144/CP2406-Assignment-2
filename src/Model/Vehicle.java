@@ -67,5 +67,27 @@ public abstract class Vehicle {
         }
     }
 
+    public void draw(Graphics g, int scale) {
+        int xValue = 0;
+        int yValue = 1;
+        if (currentRoad.getOrientation() == Road.Orientation.HORIZONTAL) {
+            int[] startLocation = getCurrentRoad().getStartLocation();
+            int width = getLength() * scale;
+            int height = getBreadth() * scale;
+            int x = (getPosition() + startLocation[xValue]) * scale;
+            int y = (startLocation[yValue] * scale) + scale;
+            g.setColor(colour);
+            g.fillRect(x, y, width, height);
+        } else if (currentRoad.getOrientation() == Road.Orientation.VERTICAL) {
+            int[] startLocation = getCurrentRoad().getStartLocation();
+            int width = getBreadth() * scale;
+            int height = getLength() * scale;
+            int x = (startLocation[xValue] * scale) + ((currentRoad.getWidth() * scale) - (width + scale));
+            int y = (getPosition() + startLocation[yValue]) * scale;
+            g.setColor(colour);
+            g.fillRect(x, y, width, height);
+        }
+    }
+
 
 }
