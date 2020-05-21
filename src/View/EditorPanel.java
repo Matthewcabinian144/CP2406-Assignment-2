@@ -32,5 +32,37 @@ public class EditorPanel extends JPanel {
                                 , Road.Orientation.HORIZONTAL));
                     }
 
+                } else {
+                    String[] orientationOptions = {"Horizontal", "Vertical"};
+                    int orientationSelection = JOptionPane.showOptionDialog(null, "Choose Orientation:",
+                            "Orientation Selection", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                            null, orientationOptions, roads);
+                    switch (orientationSelection) {
+                        case 0:
+                            roads.add(new Road(Integer.toString(roads.size()), 1, 50, new int[]{xValue,
+                                    yValue}, Road.Orientation.HORIZONTAL));
+                            break;
+                        case 1:
+                            roads.add(new Road(Integer.toString(roads.size()), 1, 50, new int[]{xValue,
+                                    yValue}, Road.Orientation.VERTICAL));
+                    }
+                    String[] connectionOptions = new String[30];
+                    for (int i = 0; i < connectionOptions.length; i++) {
+                        connectionOptions[i] = Integer.toString(i);
+                    }
+                    int connectionSelection = JOptionPane.showOptionDialog(null, "Choose Connecting Model.Road:",
+                            "Connections Selection", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                            null, connectionOptions, connectionOptions[0]);
+                    roads.get(connectionSelection).getConnectedRoads().add(roads.get(roads.size() - 1));
+                }
+                for (Road road : roads) {
+                    lights.add(new TrafficLight("1", road));
+                }
+                repaint();
+            }
+        };
+        addMouseListener(mouseLis);
+
+    }
 
 }
