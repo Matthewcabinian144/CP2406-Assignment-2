@@ -34,4 +34,11 @@ public class SimulationPanel extends JPanel {
         this.lights = lights;
     }
 
+    public void setVehicleSpawn(int spawns) {
+        this.vehiclesToSpawn = spawns - 1;
+        createVehicle();
+    }
+
+    
+
 }
