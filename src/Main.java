@@ -52,6 +52,23 @@ public class Main {
             }
         };
 
+        editMenu.add(newMapItem);
+
+        JMenuItem openMapItem = new JMenuItem("Open");
+        openMapItem.addActionListener(e -> {
+        });
+        editMenu.add(openMapItem);
+
+        JMenuItem saveMapItem = new JMenuItem("Save");
+        saveMapItem.addActionListener(e -> {
+        });
+        editMenu.add(saveMapItem);
+
+        JMenuItem exitProgramItem = new JMenuItem("Exit");
+        exitProgramItem.addActionListener(e -> System.exit(0));
+        editMenu.add(exitProgramItem);
+
+
 
     }
 
