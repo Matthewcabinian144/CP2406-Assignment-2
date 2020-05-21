@@ -1,8 +1,6 @@
 package View;
 
-import Model.Road;
-import Model.TrafficLight;
-import Model.Vehicle;
+import Model.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -41,6 +39,25 @@ public class SimulationPanel extends JPanel {
 
     public void setVehicleSpawnRate(int rate) {
         this.numberOfCycles = rate;
+    }
+
+    private void createVehicle() {
+        int randomVehicle = random.nextInt(3);
+        switch (randomVehicle) {
+            case 0:
+                vehicles.add(new Car(Integer.toString(cycle), roads.get(0)));
+                break;
+            case 1:
+                vehicles.add(new Bus(Integer.toString(cycle), roads.get(0)));
+                break;
+            case 2:
+                vehicles.add(new Motorbike(Integer.toString(cycle), roads.get(0)));
+                break;
+        }
+    }
+
+    public void setScale(int scale) {
+        this.scale = scale;
     }
 
 }
