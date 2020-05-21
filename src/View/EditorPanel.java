@@ -73,6 +73,8 @@ public class EditorPanel extends JPanel {
         return lights;
     }
 
-    
+    public void setScale(int scale) {
+        this.scale = scale;
+    }
 
 }
