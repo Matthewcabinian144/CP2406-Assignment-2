@@ -3,6 +3,7 @@ package View;
 import Model.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -59,5 +60,18 @@ public class SimulationPanel extends JPanel {
     public void setScale(int scale) {
         this.scale = scale;
     }
+
+    public void simulate() {
+        setLayout(new BorderLayout());
+        JPanel infoPanel = new JPanel();
+        infoPanel.setLayout(new GridLayout(1, 0));
+        infoPanel.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+        JLabel vehicleLabel = new JLabel("Vehicles: ");
+        infoPanel.add(vehicleLabel);
+        JLabel averageSpeedLabel = new JLabel("Average Speed: ");
+        infoPanel.add(averageSpeedLabel);
+        JLabel stateLabel = new JLabel("State: " + state);
+        infoPanel.add(stateLabel);
+        add(infoPanel, BorderLayout.SOUTH);
 
 }
