@@ -16,5 +16,15 @@ public abstract class Vehicle {
     private Color colour;
     private Random random = new Random();
 
+    public Vehicle(Road currentRoad) {
+        id = "000";
+        length = 4;
+        breadth = 2;
+        speed = 0;
+        this.currentRoad = currentRoad;
+        currentRoad.getVehiclesOnRoad().add(this); //add this vehicle to the road its on.
+        colour = randomColour();
+    }
+
 
 }
