@@ -9,6 +9,14 @@ public class TrafficLight {
     private int position;
     private Road roadAttachedTo;
 
+    public TrafficLight(String id, Road road) {
+        this.id = "light_" + id;
+        state = RED;
+        this.roadAttachedTo = road;
+        position = this.roadAttachedTo.getLength();
+        this.roadAttachedTo.getLightsOnRoad().add(this);
+    }
+
 
 
 }
