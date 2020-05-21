@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.*;
 import java.util.Random;
 
 public class TrafficLight {
@@ -52,6 +53,22 @@ public class TrafficLight {
     public String getId() {
         return id;
     }
+
+    public void draw(Graphics g, int scale) {
+        if (roadAttachedTo.getOrientation() == Road.Orientation.HORIZONTAL) {
+            switch (state) {
+                case "red":
+                    g.setColor(Color.red);
+                    break;
+                case "green":
+                    g.setColor(Color.green);
+            }
+            int[] startLocation = getRoadAttachedTo().getStartLocation();
+            int x = (getPosition() + startLocation[0]) * scale;
+            int y = startLocation[1] * scale;
+            int height = (getRoadAttachedTo().getWidth() / 2) * scale;
+            g.fillRect(x, y, scale, height);
+        }
 
 
 
