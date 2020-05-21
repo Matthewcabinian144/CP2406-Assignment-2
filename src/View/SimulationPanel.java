@@ -141,4 +141,30 @@ public class SimulationPanel extends JPanel {
         }
     }
 
+    private int getTotalVehicles() {
+        return vehiclesSpawned + 1 - vehiclesRemoved;
+    }
+
+    private String getAverageSpeed() {
+        int totalSpeed = 0;
+        for (Vehicle vehicle : vehicles) {
+            totalSpeed = totalSpeed + vehicle.getSpeed();
+        }
+        if (!vehicles.isEmpty()) {
+            int average = totalSpeed / vehicles.size();
+            return average * 3.6 + "km/h";
+        } else {
+            return "0";
+        }
+    }
+
+    public void setUpdateRate(int updateRate) {
+        this.updateRate = updateRate;
+    }
+
+
+    public void setStopSim(Boolean stop) {
+        this.stop = stop;
+    }
+
 }
