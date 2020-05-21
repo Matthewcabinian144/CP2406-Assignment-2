@@ -89,5 +89,45 @@ public abstract class Vehicle {
         }
     }
 
+    private Color randomColour() {
+        int r = random.nextInt(245 + 1) + 10;
+        int g = random.nextInt(245 + 1) + 10;
+        int b = random.nextInt(245 + 1) + 10;
+        return new Color(r, g, b);
+    }
+
+    public void printStatus() {
+        System.out.printf("%s going:%dm/s on %s at position:%s%n", this.getId(), this.getSpeed(), this.getCurrentRoad().
+                getId(), this.getPosition());
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getBreadth() {
+        return breadth;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public Road getCurrentRoad() {
+        return currentRoad;
+    }
+
+    public String getId() {
+        return id;
+    }
+
 
 }
