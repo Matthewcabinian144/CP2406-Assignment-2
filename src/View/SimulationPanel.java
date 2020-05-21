@@ -28,5 +28,5 @@ public class SimulationPanel extends JPanel {
     private int vehiclesRemoved = 0;
     private int numberOfCycles = 20;
     private int updateRate = 1000;
-    
+
 }
