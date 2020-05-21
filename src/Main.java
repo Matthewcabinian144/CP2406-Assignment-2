@@ -68,6 +68,23 @@ public class Main {
         exitProgramItem.addActionListener(e -> System.exit(0));
         editMenu.add(exitProgramItem);
 
+        JMenu simMenu = new JMenu("Simulation");
+        MenuListener simLis = new MenuListener() {
+            @Override
+            public void menuSelected(MenuEvent e) {
+                modeLabel.setText("Mode: Simulation");
+                mainWindow.repaint();
+            }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {
+            }
+
+            @Override
+            public void menuCanceled(MenuEvent e) {
+            }
+        };
+
 
 
     }
