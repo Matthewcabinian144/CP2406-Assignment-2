@@ -29,4 +29,9 @@ public class SimulationPanel extends JPanel {
     private int numberOfCycles = 20;
     private int updateRate = 1000;
 
+    public void loadMap(ArrayList<Road> roads, ArrayList<TrafficLight> lights) {
+        this.roads = roads;
+        this.lights = lights;
+    }
+
 }
