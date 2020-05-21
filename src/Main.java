@@ -51,7 +51,22 @@ public class Main {
             public void menuCanceled(MenuEvent e) {
             }
         };
+        editMenu.addMenuListener(cityLis);
+        menuBar.add(editMenu);
 
+        JMenuItem newMapItem = new JMenuItem("New");
+        newMapItem.addActionListener(e -> {
+            simulationPanel.setVisible(false);
+            mainWindow.remove(editorPanel);
+            editorPanel = new EditorPanel();
+            editorPanel.newMap();
+            editorPanel.setScale(SCALE);
+            mainWindow.add(editorPanel);
+            editorPanel.setVisible(true);
+            statusLabel.setText("Status: New Map");
+            mainWindow.validate();
+            mainWindow.repaint();
+        });
         editMenu.add(newMapItem);
 
         JMenuItem openMapItem = new JMenuItem("Open");
@@ -67,7 +82,7 @@ public class Main {
         JMenuItem exitProgramItem = new JMenuItem("Exit");
         exitProgramItem.addActionListener(e -> System.exit(0));
         editMenu.add(exitProgramItem);
-
+        
         JMenu simMenu = new JMenu("Simulation");
         MenuListener simLis = new MenuListener() {
             @Override
@@ -137,19 +152,21 @@ public class Main {
             mainWindow.repaint();
         });
 
+        JMenuItem setUpdateRateItem = new JMenuItem("Update Rate");
+        setUpdateRateItem.addActionListener(e -> {
+            String updateRateInput = JOptionPane.showInputDialog("Enter the Update Rate of the Simulation");
+            int updateRate = Integer.parseInt(updateRateInput);
+            simulationPanel.setUpdateRate(updateRate);
+            statusLabel.setText("Status: Update Rate set to " + updateRate);
+            mainWindow.validate();
+            mainWindow.repaint();
+        });
+        simMenu.add(setUpdateRateItem);
 
+        menuBar.add(simMenu);
+
+        mainWindow.setLocationRelativeTo(null);
+        mainWindow.setVisible(true);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
