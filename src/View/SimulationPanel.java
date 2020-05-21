@@ -39,6 +39,8 @@ public class SimulationPanel extends JPanel {
         createVehicle();
     }
 
-    
+    public void setVehicleSpawnRate(int rate) {
+        this.numberOfCycles = rate;
+    }
 
 }
