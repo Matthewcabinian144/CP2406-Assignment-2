@@ -114,6 +114,16 @@ public class Main {
             simulationPanel.setVehicleSpawnRate(spawnRate);
         });
 
+        JMenuItem stopSimItem = new JMenuItem("Stop");
+        stopSimItem.setEnabled(false);
+        stopSimItem.addActionListener(e -> {
+            simulationPanel.setStopSim(true);
+            statusLabel.setText("Status: Simulation Stopped");
+            mainWindow.validate();
+            mainWindow.repaint();
+        });
+        simMenu.add(stopSimItem);
+
 
 
     }
