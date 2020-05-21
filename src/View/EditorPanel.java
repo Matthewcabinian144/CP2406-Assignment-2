@@ -4,6 +4,7 @@ import Model.Road;
 import Model.TrafficLight;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -75,6 +76,31 @@ public class EditorPanel extends JPanel {
 
     public void setScale(int scale) {
         this.scale = scale;
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        if (roads.size() == 0) {
+            g.setColor(Color.YELLOW);
+            g.fillRect(0, 0, this.getWidth(), 10);
+            g.fillRect(0, 0, 10, this.getHeight());
+        }
+
+        if (!roads.isEmpty()) {
+            for (Road road : roads
+            ) {
+                road.draw(g, scale);
+            }
+        }
+
+        if (!lights.isEmpty()) {
+            for (TrafficLight light : lights
+            ) {
+                light.draw(g, scale);
+            }
+        }
     }
 
 }
