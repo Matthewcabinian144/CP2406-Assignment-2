@@ -29,6 +29,30 @@ public class TrafficLight {
         }
     }
 
+    public void printLightStatus() {
+        System.out.printf("%s is:%s on %s at position:%s%n", getId(), getState(), this.getRoadAttachedTo().getId(), this.getPosition());
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    private void setState(String state) {
+        this.state = state;
+    }
+
+    public Road getRoadAttachedTo() {
+        return roadAttachedTo;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getId() {
+        return id;
+    }
+
 
 
 }
