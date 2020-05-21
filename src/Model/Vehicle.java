@@ -46,5 +46,26 @@ public abstract class Vehicle {
             }
         }
 
+        if (speed == STOPPED) { //intentionally left empty
+        } else {
+            if (!currentRoad.getLightsOnRoad().isEmpty() && nextPosition + 1 >= currentRoad.getLightsOnRoad().get(0).getPosition() && this.currentRoad.getLightsOnRoad().get(0).getState().equals("red")) {
+                speed = STOPPED;
+            } else {
+                speed = currentRoad.getSpeedLimit();
+                if (currentRoad.getLength() <= nextPosition && !currentRoad.getConnectedRoads().isEmpty()) {
+                    currentRoad.getVehiclesOnRoad().remove(this);
+                    int nextRoadIndex = random.nextInt(2);
+                    currentRoad = currentRoad.getConnectedRoads().get(nextRoadIndex);
+                    currentRoad.getVehiclesOnRoad().add(this);
+                    position = START_POSITION;
+                } else if (currentRoad.getLength() >= nextPosition) {
+                    position = (position + speed);
+                } else {
+                    speed = STOPPED;
+                }
+            }
+        }
+    }
+
 
 }
