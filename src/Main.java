@@ -124,6 +124,19 @@ public class Main {
         });
         simMenu.add(stopSimItem);
 
+        loadSimItem.addActionListener(e -> {
+            statusLabel.setText("Status: Map Loaded!");
+            editorPanel.setVisible(false);
+            simulationPanel = new SimulationPanel();
+            simulationPanel.setScale(SCALE);
+            simulationPanel.loadMap(editorPanel.getRoads(), editorPanel.getLights());
+            mainWindow.add(simulationPanel);
+            startSimItem.setEnabled(true);
+            spawnItem.setEnabled(true);
+            stopSimItem.setEnabled(true);
+            mainWindow.repaint();
+        });
+
 
 
     }
