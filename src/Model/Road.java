@@ -55,5 +55,27 @@ public class Road {
             g.fillRect(x + (width / 2) + scale / 6, y, scale / 6, height);
         }
     }
+    String getId() {
+        return id;
+    }
 
+    public int getSpeedLimit() {
+        return speedLimit;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    int getWidth() {
+        return width;
+    }
+
+    private void setEndLocation() {
+        if (orientation == Orientation.HORIZONTAL) {
+            this.endLocation = new int[]{this.length + this.startLocation[0], this.startLocation[1]}; //only works for horizontal roads;
+        } else if (orientation == Orientation.VERTICAL) {
+            this.endLocation = new int[]{this.startLocation[1], this.length + this.startLocation[0]};
+        }
+    }
 }
