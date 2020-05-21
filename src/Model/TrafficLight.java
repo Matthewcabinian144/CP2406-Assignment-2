@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Random;
+
 public class TrafficLight {
     private static final double CHANGE = 0.4; // more often red
     private static final String GREEN = "green";
@@ -15,6 +17,16 @@ public class TrafficLight {
         this.roadAttachedTo = road;
         position = this.roadAttachedTo.getLength();
         this.roadAttachedTo.getLightsOnRoad().add(this);
+    }
+
+    public void operate(int seed) {
+        Random random = new Random(seed);
+        double probability = random.nextDouble();
+        if (probability > CHANGE && !getRoadAttachedTo().getVehiclesOnRoad().isEmpty()) {
+            setState(RED);
+        } else {
+            setState(GREEN);
+        }
     }
 
 
