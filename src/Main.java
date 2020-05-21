@@ -2,6 +2,8 @@ import View.EditorPanel;
 import View.SimulationPanel;
 
 import javax.swing.*;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
 
 public class Main {
@@ -32,6 +34,23 @@ public class Main {
         //Simulator Menu Bar//
         JMenuBar menuBar = new JMenuBar();
         mainWindow.add(menuBar, BorderLayout.NORTH);
+
+        JMenu editMenu = new JMenu("City Editor");
+        MenuListener cityLis = new MenuListener() {
+            @Override
+            public void menuSelected(MenuEvent e) {
+                modeLabel.setText("Mode: Editor");
+                mainWindow.repaint();
+            }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {
+            }
+
+            @Override
+            public void menuCanceled(MenuEvent e) {
+            }
+        };
 
 
     }
