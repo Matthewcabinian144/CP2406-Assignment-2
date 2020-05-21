@@ -84,6 +84,35 @@ public class Main {
             public void menuCanceled(MenuEvent e) {
             }
         };
+        simMenu.addMenuListener(simLis);
+
+
+        JMenuItem loadSimItem = new JMenuItem("Load Map");
+        simMenu.add(loadSimItem);
+
+        JMenuItem spawnItem = new JMenuItem("Add Vehicles");
+        spawnItem.setEnabled(false);
+        simMenu.add(spawnItem);
+
+        JMenuItem startSimItem = new JMenuItem("Start");
+        startSimItem.setEnabled(false);
+        startSimItem.addActionListener(e -> {
+            simulationPanel.simulate();
+            statusLabel.setText("Status: Simulation Started");
+            simulationPanel.setStopSim(false);
+            mainWindow.validate();
+            mainWindow.repaint();
+        });
+        simMenu.add(startSimItem);
+
+        spawnItem.addActionListener(e -> {
+            String spawnInput = JOptionPane.showInputDialog("Total number of Vehicles to spawn:");
+            int spawns = Integer.parseInt(spawnInput);
+            simulationPanel.setVehicleSpawn(spawns);
+            String spawnRateInput = JOptionPane.showInputDialog("Number of Simulation tics between spawns:");
+            int spawnRate = Integer.parseInt(spawnRateInput);
+            simulationPanel.setVehicleSpawnRate(spawnRate);
+        });
 
 
 
