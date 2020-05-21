@@ -82,7 +82,7 @@ public class Main {
         JMenuItem exitProgramItem = new JMenuItem("Exit");
         exitProgramItem.addActionListener(e -> System.exit(0));
         editMenu.add(exitProgramItem);
-        
+
         JMenu simMenu = new JMenu("Simulation");
         MenuListener simLis = new MenuListener() {
             @Override
