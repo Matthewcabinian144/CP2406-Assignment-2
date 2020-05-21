@@ -118,5 +118,26 @@ public class SimulationPanel extends JPanel {
         });
         timer.start();
     }
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+        for (Road road : roads
+        ) {
+            road.draw(g, scale);
+        }
+
+        if (!vehicles.isEmpty()) {
+            for (Vehicle vehicle : vehicles
+            ) {
+                vehicle.draw(g, scale);
+            }
+        }
+
+        for (TrafficLight light : lights
+        ) {
+            light.draw(g, scale);
+        }
+    }
 
 }

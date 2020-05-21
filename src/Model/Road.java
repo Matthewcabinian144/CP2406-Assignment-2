@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Road {
@@ -27,6 +28,32 @@ public class Road {
         this.orientation = orientation;
         this.startLocation = startLocation;
         setEndLocation();
+    }
+
+    public void draw(Graphics g, int scale) {
+        if (orientation == Orientation.HORIZONTAL) {
+            int[] startLocation = this.startLocation;
+            int x = startLocation[0] * scale;
+            int y = startLocation[1] * scale;
+            int width = length * scale;
+            int height = this.width * scale;
+            g.setColor(Color.darkGray);
+            g.fillRect(x, y, width, height);
+            g.setColor(Color.white);
+            g.fillRect(x, y + (height / 2) - scale / 6, width, scale / 6);
+            g.fillRect(x, y + (height / 2) + scale / 6, width, scale / 6);
+        } else if (orientation == Orientation.VERTICAL) {
+            int[] startLocation = this.startLocation;
+            int x = startLocation[0] * scale;
+            int y = startLocation[1] * scale;
+            int width = this.width * scale;
+            int height = length * scale;
+            g.setColor(Color.darkGray);
+            g.fillRect(x, y, width, height);
+            g.setColor(Color.white);
+            g.fillRect(x + (width / 2) - scale / 6, y, scale / 6, height);
+            g.fillRect(x + (width / 2) + scale / 6, y, scale / 6, height);
+        }
     }
 
 }
