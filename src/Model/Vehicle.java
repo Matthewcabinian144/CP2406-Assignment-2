@@ -26,5 +26,25 @@ public abstract class Vehicle {
         colour = randomColour();
     }
 
+    public Vehicle() {
+        id = "000";
+        length = 0;
+        breadth = 0;
+        speed = 0;
+        position = 0;
+    }
+
+    public void move() {
+        Random random = new Random();
+        int nextPosition = position + length + speed;
+        for (Vehicle nextVehicle : currentRoad.getVehiclesOnRoad()) {
+            if (nextVehicle.position > position && nextVehicle.position <= nextPosition + 4) {
+                speed = STOPPED;
+                break;
+            } else {
+                speed = currentRoad.getSpeedLimit();
+            }
+        }
+
 
 }
