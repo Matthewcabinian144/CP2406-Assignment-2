@@ -78,4 +78,28 @@ public class Road {
             this.endLocation = new int[]{this.startLocation[1], this.length + this.startLocation[0]};
         }
     }
+
+    public int[] getStartLocation() {
+        return startLocation;
+    }
+
+    public int[] getEndLocation() {
+        return endLocation;
+    }
+
+    public ArrayList<Vehicle> getVehiclesOnRoad() {
+        return vehiclesOnRoad;
+    }
+
+    public ArrayList<TrafficLight> getLightsOnRoad() {
+        return lightsOnRoad;
+    }
+
+    public ArrayList<Road> getConnectedRoads() {
+        return connectedRoads;
+    }
+
+    Orientation getOrientation() {
+        return orientation;
+    }
 }
